@@ -1,0 +1,29 @@
+<div>
+  <tabset>
+    <tab heading="Basic title" id="tab1">List</tab>
+    <tab heading="Basic Title 1">
+      <div class="map container">
+        <agm-map style="height: 500px" [latitude]='latitude' [longitude]='longitude' 
+        [mapTypeId]='mapType' [zoom]="zoom">
+        <agm-marker
+        *ngFor="let marker of markers"
+        [latitude]="marker.lat"
+        [longitude]="marker.lng"
+        [opacity]="marker.alpha"
+        [markerDraggable]="true"
+        [iconUrl]="marker.icon"
+        (markerClick)="selectMarker($event)"
+      >
+      </agm-marker>
+      </agm-map>
+      <p *ngIf="selectedMarker">
+            Lat: {{ selectedMarker.lat }} Lng: {{ selectedMarker.lng }}
+          </p>
+      </div>
+    </tab>
+  </tabset>
+</div>
+
+
+
+
